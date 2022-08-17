@@ -1,44 +1,46 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require("mongoose");
+const thoughtSchema = require("./Thought");
 
-const UserSchema = new Schema(
-    {
-        username: {
-            type: String,
-            unique: true,
-            required: true,
-            trim: true
-        },
-        email: {
-            type: String,
-            required: true,
-            unique: true,
-            match: [/.+\@.+\..+/]
-        },
-        thoughts: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'Thought'
-            }
+const userSchema = new Schema({
+    username: { 
+        type: String, 
+        unique: [true, "That username is already in use!"], 
+        required: [true,"Username should not be empty"], 
+        trim: true 
+    },
+
+    email: {
+        type: String,
+        unique: [true, "That email is already in use!"], 
+        required:[true,"Email should not be empty"], 
+        match: [
+          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+          "Please enter a valid email address.",
         ],
-        friends: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'User'
-            }
-        ]
+      },
+
+    thoughts: [{
+        type: Schema.Types.ObjectId,
+        ref: "Thought",
+    },],
+
+    friends: [{
+        type: Schema.Types.ObjectId,
+        ref: "User",
+    },],
     },
     {
-        toJSON: {
-            virtuals: true
-        },
-        id: false
+      toJSON: {
+        virtuals: true
+      },
+      id:false,
     }
-)
+  );
+  const User = model("User", userSchema);
 
-UserSchema.virtual('friendCount').get(function() {
-    return this.friends.length
-});
+  userSchema.virtual("friendCount").get(function(){
+    return this.friends.length;
+  });
 
-const User = model('User', UserSchema)
-
-module.exports = User
+  module.exports = User;
+  
