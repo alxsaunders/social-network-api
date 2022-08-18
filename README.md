@@ -28,4 +28,14 @@ USER ROUTES
 
 https://drive.google.com/file/d/1mbXKePIky5tSgeUpFLmcRyZVYAbiXifs/view
 
+
+Thoughts Routes
 https://drive.google.com/file/d/1aVPlsEd2QlZqDW9mc183KCGG8Lj2jkCD/view
+
+
+Reactions Routes 
+https://drive.google.com/file/d/1N7v2dNhqD1wvIdxEN7XLhWn3C6wEz0IZ/view
+
+Friends Routes
+
+https://drive.google.com/file/d/1b28y4PKydGth2kM_90IhkC22i7nBV4dN/view
